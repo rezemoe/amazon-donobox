@@ -1,0 +1,7 @@
+/donobox
+/data/
+*.db
+*.db-shm
+*.db-wal
+cookies.json
+.env

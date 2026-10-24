@@ -1,0 +1,25 @@
+services:
+  donobox:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      API_TOKEN: ${API_TOKEN:?set API_TOKEN in .env}
+      REDEEMER: ${REDEEMER:-amazon}
+      REDEEM_DELAY: ${REDEEM_DELAY:-30s}
+      PAUSE_DURATION: ${PAUSE_DURATION:-30m}
+      MAX_CONSECUTIVE_FAILURES: ${MAX_CONSECUTIVE_FAILURES:-3}
+    volumes:
+      - data:/data
+      - ./cookies.json:/config/cookies.json:ro
+    shm_size: 256m
+    # Lets an in-flight redemption finish and record its result on shutdown.
+    stop_grace_period: 2m
+
+volumes:
+  data:

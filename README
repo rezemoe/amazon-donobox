@@ -1,0 +1,9 @@
+amazon-donobox (.de only!!!)
+
+accept giftcards
+
+setup:
+1. get cookies using cookie editor as json, save as cookies.json
+2. set API_TOKEN in .env using openssl rand -hex 32
+3. docker compose up -d --build
+4. profit

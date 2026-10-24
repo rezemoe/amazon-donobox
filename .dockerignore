@@ -1,0 +1,6 @@
+.git
+.env
+cookies.json
+data
+donobox
+*.db*
